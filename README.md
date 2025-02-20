@@ -96,5 +96,6 @@ build = "pyinstaller --onefile --clean --add-data 'assets:assets' --name 'face-m
   - リサイズサイズ
   - ぼかしの強さ
   - 標準出力 ON/OFF
+  - 進捗出力
 - 遅延import（PEP準拠したい）
 - テストコード（importlib）
