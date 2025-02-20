@@ -34,7 +34,7 @@ jobs:
           tar -czvf face-mosaic.tar.gz dist/face-mosaic
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2.2.1
         with:
           tag_name: ${{ github.event.inputs.version }}
           files: face-mosaic.tar.gz
