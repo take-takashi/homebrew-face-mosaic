@@ -54,7 +54,11 @@ jobs:
           FORMULA_FILE="face-mosaic.rb"
           VERSION=${{ github.event.inputs.version }}
           URL="https://github.com/${{ github.repository }}/releases/download/${VERSION}/face-mosaic.tar.gz"
-          SHA256=$(shasum -a 256 ../../../face-mosaic.tar.gz | awk '{print $1}')
+
+          TAR_PATH="${GITHUB_WORKSPACE}/face-mosaic.tar.gz"
+          SHA256=$(shasum -a 256 "${TAR_PATH}" | awk '{print $1}')
+
+          echo "Computed SHA256: $SHA256"
 
           # Update formula with new version, URL, and SHA256
           sed -i '' "s|url \".*\"|url \"${URL}\"|" $FORMULA_FILE
