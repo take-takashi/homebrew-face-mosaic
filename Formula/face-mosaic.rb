@@ -2,7 +2,7 @@ class FaceMosaic < Formula
     desc "撮影動画にモザイク編集をかけるCLIツール"
     homepage "https://github.com/take-takashi/homebrew-face-mosaic"
     url "https://github.com/take-takashi/homebrew-face-mosaic/releases/download/0.1.0/face-mosaic.tar.gz"
-    sha256 "4d0b868926f43baec9440eb3f55a487a9ae3bbdc74c0cedeac175201aa667b8c"
+    sha256 "3fadf1483b0803d6bce950257216f32c369e20072d6e30174fd5ba42d9d7b1b3"
     license "MIT"
     version "0.1.0"
 
