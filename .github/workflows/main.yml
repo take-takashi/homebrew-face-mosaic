@@ -43,7 +43,7 @@ jobs:
 
       - name: Update Homebrew Formula
         run: |
-          brew install bump-formula-pr
+          brew update
           brew bump-formula-pr --version=${{ github.event.inputs.version }} face-mosaic
 
         env:
