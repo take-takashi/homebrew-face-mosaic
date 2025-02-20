@@ -6,7 +6,7 @@ on:
       version:
         description: 'リリースバージョン'
         required: true
-        default: '0.1.0'
+        default: 'v0.1.0'
 
 jobs:
   release:
@@ -48,10 +48,24 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           path: homebrew-tap
 
-      - name: Update Homebrew Formula
-        working-directory: homebrew-tap
+      - name: Update Homebrew Formula Manually
+        working-directory: homebrew-tap/Formula
         run: |
-          brew update
-          brew bump-formula-pr --version=${{ github.event.inputs.version }} face-mosaic
+          FORMULA_FILE="face-mosaic.rb"
+          VERSION=${{ github.event.inputs.version }}
+          URL="https://github.com/${{ github.repository }}/releases/download/${VERSION}/face-mosaic.tar.gz"
+          SHA256=$(shasum -a 256 ../../../face-mosaic.tar.gz | awk '{print $1}')
+
+          # Update formula with new version, URL, and SHA256
+          sed -i '' "s|url \".*\"|url \"${URL}\"|" $FORMULA_FILE
+          sed -i '' "s|sha256 \".*\"|sha256 \"${SHA256}\"|" $FORMULA_FILE
+          sed -i '' "s|version \".*\"|version \"${VERSION}\"|" $FORMULA_FILE || true
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add $FORMULA_FILE
+          git commit -m "Update face-mosaic formula to v${VERSION}"
+          git push origin main
+
         env:
           HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
