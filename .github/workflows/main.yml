@@ -43,7 +43,8 @@ jobs:
 
       - name: Update Homebrew Formula
         run: |
-          gem install bump-formula-pr
+          brew install bump-formula-pr
           brew bump-formula-pr --version=${{ github.event.inputs.version }} face-mosaic
+
         env:
           HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
