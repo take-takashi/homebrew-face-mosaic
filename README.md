@@ -87,3 +87,14 @@ build = "pyinstaller --onefile --clean --add-data 'assets:assets' --name 'face-m
   YOLOのモデルDL
 - [akanametov/yolo-face: YOLO Face 🚀 in PyTorch](https://github.com/akanametov/yolo-face?tab=readme-ov-file)  
   YOLOのモデルDL（顔検出）
+
+## TODO
+
+- パラメータの追加
+  - help
+  - キャッシュディレクトリの場所
+  - リサイズサイズ
+  - ぼかしの強さ
+  - 標準出力 ON/OFF
+- 遅延import（PEP準拠したい）
+- テストコード（importlib）
