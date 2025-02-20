@@ -6,7 +6,7 @@ on:
       version:
         description: 'リリースバージョン'
         required: true
-        default: 'v0.1.0'
+        default: '0.1.0'
 
 jobs:
   release:
