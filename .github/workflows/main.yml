@@ -28,7 +28,7 @@ jobs:
 
       - name: Build app with PyInstaller using Poetry
         run: |
-          poetry run task buikd
+          poetry run task build
           tar -czvf face-mosaic.tar.gz dist/face-mosaic
 
       - name: Create GitHub Release
