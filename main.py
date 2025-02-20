@@ -5,8 +5,8 @@ import matplotlib
 
 # キャッシュフォルダの変更
 # （残念ながらultralyticsのimport前に実施する必要がある）
-os.environ["MPLCONFIGDIR"] = "./.mpl_cache"
-print(f"matplotlib: {matplotlib.get_cachedir()}")
+os.environ["MPLCONFIGDIR"] = str(Path.joinpath(Path.home(), ".mpl_cache"))
+print(f"matplotlib cache dir: {matplotlib.get_cachedir()}")
 
 import cv2
 import torch
